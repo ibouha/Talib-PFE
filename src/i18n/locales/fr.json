@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "Talib",
+    "tagline": "Votre vie étudiante, simplifiée"
+  },
+  "nav": {
+    "home": "Accueil",
+    "housing": "Logement",
+    "items": "Objets",
+    "roommates": "Colocataires",
+    "favorites": "Favoris",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "hero": {
+      "title": "La vie étudiante facilitée",
+      "subtitle": "Trouvez un logement, échangez des objets et connectez-vous avec des colocataires - le tout au même endroit.",
+      "ctaHousing": "Trouver un logement",
+      "ctaItems": "Échanger des objets",
+      "ctaRoommates": "Trouver des colocataires"
+    },
+    "features": {
+      "title": "Tout ce dont vous avez besoin",
+      "housing": {
+        "title": "Logement",
+        "description": "Trouvez un logement abordable et confortable près de votre université."
+      },
+      "items": {
+        "title": "Échange d'objets",
+        "description": "Achetez, vendez ou échangez des manuels scolaires, des meubles et plus encore."
+      },
+      "roommates": {
+        "title": "Recherche de colocataires",
+        "description": "Trouvez des colocataires compatibles selon vos préférences."
+      }
+    },
+    "testimonials": {
+      "title": "Ce que disent les étudiants",
+      "more": "Voir plus"
+    },
+    "stats": {
+      "title": "Notre communauté",
+      "students": "Étudiants",
+      "listings": "Annonces",
+      "universities": "Universités",
+      "cities": "Villes"
+    }
+  },
+  "housing": {
+    "title": "Trouvez votre logement idéal",
+    "filters": {
+      "title": "Filtres",
+      "price": "Fourchette de prix",
+      "location": "Emplacement",
+      "type": "Type de propriété",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salles de bain",
+      "furnished": "Meublé",
+      "availability": "Disponibilité",
+      "apply": "Appliquer les filtres",
+      "clear": "Effacer les filtres"
+    },
+    "types": {
+      "apartment": "Appartement",
+      "house": "Maison",
+      "studio": "Studio",
+      "dormitory": "Résidence universitaire",
+      "shared": "Chambre partagée"
+    },
+    "sort": {
+      "newest": "Plus récent",
+      "priceAsc": "Prix (croissant)",
+      "priceDesc": "Prix (décroissant)"
+    },
+    "noResults": "Aucun logement trouvé"
+  },
+  "items": {
+    "title": "Acheter, vendre et échanger des objets",
+    "filters": {
+      "title": "Filtres",
+      "category": "Catégorie",
+      "condition": "État",
+      "price": "Fourchette de prix",
+      "apply": "Appliquer les filtres",
+      "clear": "Effacer les filtres"
+    },
+    "categories": {
+      "textbooks": "Manuels scolaires",
+      "furniture": "Meubles",
+      "electronics": "Électronique",
+      "clothing": "Vêtements",
+      "kitchenware": "Articles de cuisine",
+      "other": "Autre"
+    },
+    "conditions": {
+      "new": "Neuf",
+      "likeNew": "Comme neuf",
+      "good": "Bon",
+      "fair": "Correct",
+      "poor": "Usé"
+    },
+    "sort": {
+      "newest": "Plus récent",
+      "priceAsc": "Prix (croissant)",
+      "priceDesc": "Prix (décroissant)"
+    },
+    "noResults": "Aucun objet trouvé"
+  },
+  "roommates": {
+    "title": "Trouvez votre colocataire idéal",
+    "filters": {
+      "title": "Filtres",
+      "gender": "Genre",
+      "age": "Tranche d'âge",
+      "university": "Université",
+      "lifestyle": "Style de vie",
+      "apply": "Appliquer les filtres",
+      "clear": "Effacer les filtres"
+    },
+    "gender": {
+      "male": "Homme",
+      "female": "Femme",
+      "other": "Autre",
+      "noPreference": "Sans préférence"
+    },
+    "lifestyle": {
+      "early": "Lève-tôt",
+      "night": "Couche-tard",
+      "quiet": "Calme",
+      "social": "Social",
+      "clean": "Ordonné et propre"
+    },
+    "noResults": "Aucun profil de colocataire trouvé"
+  },
+  "auth": {
+    "login": {
+      "title": "Bon retour",
+      "email": "Email",
+      "password": "Mot de passe",
+      "submit": "Connexion",
+      "forgotPassword": "Mot de passe oublié?",
+      "noAccount": "Vous n'avez pas de compte?",
+      "register": "Inscrivez-vous maintenant"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "name": "Nom complet",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "role": "Je suis un",
+      "student": "Étudiant",
+      "owner": "Propriétaire",
+      "university": "Université",
+      "submit": "S'inscrire",
+      "haveAccount": "Vous avez déjà un compte?",
+      "login": "Connexion"
+    }
+  },
+  "dashboard": {
+    "welcome": "Bienvenue, {{name}}",
+    "stats": {
+      "listings": "Vos annonces",
+      "messages": "Messages",
+      "saved": "Objets sauvegardés",
+      "views": "Vues du profil"
+    },
+    "quickActions": {
+      "title": "Actions rapides",
+      "addHousing": "Ajouter un logement",
+      "addItem": "Ajouter un objet",
+      "updateProfile": "Mettre à jour le profil"
+    },
+    "recentListings": "Annonces récentes",
+    "recentMessages": "Messages récents"
+  },
+  "profile": {
+    "title": "Votre profil",
+    "personal": "Informations personnelles",
+    "preferences": "Préférences",
+    "listings": "Vos annonces",
+    "save": "Enregistrer les modifications"
+  },
+  "favorites": {
+    "title": "Vos favoris",
+    "housing": "Logements sauvegardés",
+    "items": "Objets sauvegardés",
+    "roommates": "Profils de colocataires sauvegardés",
+    "empty": "Vous n'avez encore rien sauvegardé"
+  },
+  "forms": {
+    "required": "Champ obligatoire",
+    "invalid": "Format invalide",
+    "success": "Succès!",
+    "error": "Une erreur s'est produite",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "submit": "Soumettre",
+    "uploading": "Téléchargement...",
+    "image": {
+      "add": "Ajouter une image",
+      "change": "Changer l'image",
+      "remove": "Supprimer l'image"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "seeAll": "Voir tout",
+    "seeMore": "Voir plus",
+    "search": "Rechercher...",
+    "results": "{{count}} résultats trouvés",
+    "filter": "Filtrer",
+    "sort": "Trier par",
+    "contact": "Contact",
+    "share": "Partager",
+    "save": "Sauvegarder",
+    "remove": "Supprimer",
+    "price": "{{price}} MAD",
+    "university": "Université",
+    "city": "Ville",
+    "date": "Publié le {{date}}",
+    "back": "Retour"
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "طالب",
+    "tagline": "حياتك الطلابية، ببساطة"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "housing": "السكن",
+    "items": "الأغراض",
+    "roommates": "شركاء السكن",
+    "favorites": "المفضلة",
+    "dashboard": "لوحة التحكم",
+    "profile": "الملف الشخصي",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج"
+  },
+  "home": {
+    "hero": {
+      "title": "حياة طلابية أسهل",
+      "subtitle": "ابحث عن سكن، تبادل الأغراض، وتواصل مع شركاء السكن - كل ذلك في مكان واحد.",
+      "ctaHousing": "ابحث عن سكن",
+      "ctaItems": "تبادل الأغراض",
+      "ctaRoommates": "ابحث عن شركاء سكن"
+    },
+    "features": {
+      "title": "كل ما تحتاجه",
+      "housing": {
+        "title": "السكن",
+        "description": "ابحث عن سكن بأسعار معقولة ومريح بالقرب من جامعتك."
+      },
+      "items": {
+        "title": "تبادل الأغراض",
+        "description": "اشتر، بع أو تبادل الكتب الدراسية، الأثاث، وأكثر من ذلك."
+      },
+      "roommates": {
+        "title": "البحث عن شركاء سكن",
+        "description": "ابحث عن شركاء سكن متوافقين بناءً على تفضيلاتك."
+      }
+    },
+    "testimonials": {
+      "title": "ماذا يقول الطلاب",
+      "more": "عرض المزيد"
+    },
+    "stats": {
+      "title": "مجتمعنا",
+      "students": "طالب",
+      "listings": "إعلان",
+      "universities": "جامعة",
+      "cities": "مدينة"
+    }
+  },
+  "housing": {
+    "title": "ابحث عن سكنك المثالي",
+    "filters": {
+      "title": "المرشحات",
+      "price": "نطاق السعر",
+      "location": "الموقع",
+      "type": "نوع العقار",
+      "bedrooms": "غرف النوم",
+      "bathrooms": "الحمامات",
+      "furnished": "مفروش",
+      "availability": "التوفر",
+      "apply": "تطبيق المرشحات",
+      "clear": "مسح المرشحات"
+    },
+    "types": {
+      "apartment": "شقة",
+      "house": "منزل",
+      "studio": "استوديو",
+      "dormitory": "سكن جامعي",
+      "shared": "غرفة مشتركة"
+    },
+    "sort": {
+      "newest": "الأحدث",
+      "priceAsc": "السعر (من الأقل إلى الأعلى)",
+      "priceDesc": "السعر (من الأعلى إلى الأقل)"
+    },
+    "noResults": "لم يتم العثور على إعلانات سكن"
+  },
+  "items": {
+    "title": "اشتر، بع وتبادل الأغراض",
+    "filters": {
+      "title": "المرشحات",
+      "category": "الفئة",
+      "condition": "الحالة",
+      "price": "نطاق السعر",
+      "apply": "تطبيق المرشحات",
+      "clear": "مسح المرشحات"
+    },
+    "categories": {
+      "textbooks": "كتب دراسية",
+      "furniture": "أثاث",
+      "electronics": "إلكترونيات",
+      "clothing": "ملابس",
+      "kitchenware": "أدوات مطبخ",
+      "other": "أخرى"
+    },
+    "conditions": {
+      "new": "جديد",
+      "likeNew": "كالجديد",
+      "good": "جيد",
+      "fair": "مقبول",
+      "poor": "سيء"
+    },
+    "sort": {
+      "newest": "الأحدث",
+      "priceAsc": "السعر (من الأقل إلى الأعلى)",
+      "priceDesc": "السعر (من الأعلى إلى الأقل)"
+    },
+    "noResults": "لم يتم العثور على أغراض"
+  },
+  "roommates": {
+    "title": "ابحث عن شريك السكن المثالي",
+    "filters": {
+      "title": "المرشحات",
+      "gender": "الجنس",
+      "age": "الفئة العمرية",
+      "university": "الجامعة",
+      "lifestyle": "نمط الحياة",
+      "apply": "تطبيق المرشحات",
+      "clear": "مسح المرشحات"
+    },
+    "gender": {
+      "male": "ذكر",
+      "female": "أنثى",
+      "other": "أخرى",
+      "noPreference": "لا تفضيل"
+    },
+    "lifestyle": {
+      "early": "يستيقظ باكرًا",
+      "night": "يسهر ليلًا",
+      "quiet": "هادئ",
+      "social": "اجتماعي",
+      "clean": "منظم ونظيف"
+    },
+    "noResults": "لم يتم العثور على ملفات شركاء سكن"
+  },
+  "auth": {
+    "login": {
+      "title": "مرحبًا بعودتك",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "register": "سجل الآن"
+    },
+    "register": {
+      "title": "إنشاء حساب",
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "role": "أنا",
+      "student": "طالب",
+      "owner": "مالك عقار",
+      "university": "الجامعة",
+      "submit": "التسجيل",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "login": "تسجيل الدخول"
+    }
+  },
+  "dashboard": {
+    "welcome": "مرحبًا، {{name}}",
+    "stats": {
+      "listings": "إعلاناتك",
+      "messages": "الرسائل",
+      "saved": "العناصر المحفوظة",
+      "views": "مشاهدات الملف الشخصي"
+    },
+    "quickActions": {
+      "title": "إجراءات سريعة",
+      "addHousing": "إضافة سكن",
+      "addItem": "إضافة غرض",
+      "updateProfile": "تحديث الملف الشخصي"
+    },
+    "recentListings": "أحدث الإعلانات",
+    "recentMessages": "أحدث الرسائل"
+  },
+  "profile": {
+    "title": "ملفك الشخصي",
+    "personal": "المعلومات الشخصية",
+    "preferences": "التفضيلات",
+    "listings": "إعلاناتك",
+    "save": "حفظ التغييرات"
+  },
+  "favorites": {
+    "title": "مفضلاتك",
+    "housing": "السكن المحفوظ",
+    "items": "الأغراض المحفوظة",
+    "roommates": "ملفات شركاء السكن المحفوظة",
+    "empty": "لم تقم بحفظ أي شيء بعد"
+  },
+  "forms": {
+    "required": "حقل مطلوب",
+    "invalid": "تنسيق غير صالح",
+    "success": "نجاح!",
+    "error": "حدث خطأ",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "submit": "إرسال",
+    "uploading": "جاري التحميل...",
+    "image": {
+      "add": "إضافة صورة",
+      "change": "تغيير الصورة",
+      "remove": "إزالة الصورة"
+    }
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "seeAll": "عرض الكل",
+    "seeMore": "عرض المزيد",
+    "search": "بحث...",
+    "results": "تم العثور على {{count}} نتيجة",
+    "filter": "تصفية",
+    "sort": "ترتيب حسب",
+    "contact": "اتصل",
+    "share": "مشاركة",
+    "save": "حفظ",
+    "remove": "إزالة",
+    "price": "{{price}} درهم",
+    "university": "الجامعة",
+    "city": "المدينة",
+    "date": "نشر في {{date}}",
+    "back": "رجوع"
+  }
+}

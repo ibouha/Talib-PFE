@@ -1,0 +1,228 @@
+{
+  "app": {
+    "name": "Talib",
+    "tagline": "Your student life, simplified"
+  },
+  "nav": {
+    "home": "Home",
+    "housing": "Housing",
+    "items": "Items",
+    "roommates": "Roommates",
+    "favorites": "Favorites",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "home": {
+    "hero": {
+      "title": "Student Life Made Easier",
+      "subtitle": "Find housing, exchange items, and connect with roommates - all in one place.",
+      "ctaHousing": "Find Housing",
+      "ctaItems": "Exchange Items",
+      "ctaRoommates": "Find Roommates"
+    },
+    "features": {
+      "title": "Everything You Need",
+      "housing": {
+        "title": "Housing",
+        "description": "Find affordable and comfortable housing near your university."
+      },
+      "items": {
+        "title": "Item Exchange",
+        "description": "Buy, sell or exchange textbooks, furniture, and more."
+      },
+      "roommates": {
+        "title": "Roommate Matching",
+        "description": "Find compatible roommates based on your preferences."
+      }
+    },
+    "testimonials": {
+      "title": "What Students Say",
+      "more": "View More"
+    },
+    "stats": {
+      "title": "Our Community",
+      "students": "Students",
+      "listings": "Listings",
+      "universities": "Universities",
+      "cities": "Cities"
+    }
+  },
+  "housing": {
+    "title": "Find Your Perfect Home",
+    "filters": {
+      "title": "Filters",
+      "price": "Price Range",
+      "location": "Location",
+      "type": "Property Type",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "furnished": "Furnished",
+      "availability": "Availability",
+      "apply": "Apply Filters",
+      "clear": "Clear Filters"
+    },
+    "types": {
+      "apartment": "Apartment",
+      "house": "House",
+      "studio": "Studio",
+      "dormitory": "Dormitory",
+      "shared": "Shared Room"
+    },
+    "sort": {
+      "newest": "Newest",
+      "priceAsc": "Price (Low to High)",
+      "priceDesc": "Price (High to Low)"
+    },
+    "noResults": "No housing listings found"
+  },
+  "items": {
+    "title": "Buy, Sell & Exchange Items",
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "condition": "Condition",
+      "price": "Price Range",
+      "apply": "Apply Filters",
+      "clear": "Clear Filters"
+    },
+    "categories": {
+      "textbooks": "Textbooks",
+      "furniture": "Furniture",
+      "electronics": "Electronics",
+      "clothing": "Clothing",
+      "kitchenware": "Kitchenware",
+      "other": "Other"
+    },
+    "conditions": {
+      "new": "New",
+      "likeNew": "Like New",
+      "good": "Good",
+      "fair": "Fair",
+      "poor": "Poor"
+    },
+    "sort": {
+      "newest": "Newest",
+      "priceAsc": "Price (Low to High)",
+      "priceDesc": "Price (High to Low)"
+    },
+    "noResults": "No items found"
+  },
+  "roommates": {
+    "title": "Find Your Ideal Roommate",
+    "filters": {
+      "title": "Filters",
+      "gender": "Gender",
+      "age": "Age Range",
+      "university": "University",
+      "lifestyle": "Lifestyle",
+      "apply": "Apply Filters",
+      "clear": "Clear Filters"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "noPreference": "No Preference"
+    },
+    "lifestyle": {
+      "early": "Early Bird",
+      "night": "Night Owl",
+      "quiet": "Quiet",
+      "social": "Social",
+      "clean": "Neat & Clean"
+    },
+    "noResults": "No roommate profiles found"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "register": "Register now"
+    },
+    "register": {
+      "title": "Create Account",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "role": "I am a",
+      "student": "Student",
+      "owner": "Property Owner",
+      "university": "University",
+      "submit": "Register",
+      "haveAccount": "Already have an account?",
+      "login": "Login"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "stats": {
+      "listings": "Your Listings",
+      "messages": "Messages",
+      "saved": "Saved Items",
+      "views": "Profile Views"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "addHousing": "Add Housing",
+      "addItem": "Add Item",
+      "updateProfile": "Update Profile"
+    },
+    "recentListings": "Recent Listings",
+    "recentMessages": "Recent Messages"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "personal": "Personal Information",
+    "preferences": "Preferences",
+    "listings": "Your Listings",
+    "save": "Save Changes"
+  },
+  "favorites": {
+    "title": "Your Favorites",
+    "housing": "Saved Housing",
+    "items": "Saved Items",
+    "roommates": "Saved Roommate Profiles",
+    "empty": "You haven't saved anything yet"
+  },
+  "forms": {
+    "required": "Required field",
+    "invalid": "Invalid format",
+    "success": "Success!",
+    "error": "An error occurred",
+    "cancel": "Cancel",
+    "save": "Save",
+    "submit": "Submit",
+    "uploading": "Uploading...",
+    "image": {
+      "add": "Add Image",
+      "change": "Change Image",
+      "remove": "Remove Image"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "seeAll": "See All",
+    "seeMore": "See More",
+    "search": "Search...",
+    "results": "{{count}} results found",
+    "filter": "Filter",
+    "sort": "Sort By",
+    "contact": "Contact",
+    "share": "Share",
+    "save": "Save",
+    "remove": "Remove",
+    "price": "{{price}} MAD",
+    "university": "University",
+    "city": "City",
+    "date": "Posted on {{date}}",
+    "back": "Back"
+  }
+}

@@ -6,11 +6,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Layouts
 import MainLayout from './layouts/MainLayout';
+import AuthLayout from './layouts/AuthLayout';
 
 // Pages
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
-import AuthLayout from './layouts/AuthLayout';
+import Register from './pages/auth/Register';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         {/* Auth Layout Routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
       

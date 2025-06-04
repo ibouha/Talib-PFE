@@ -12,32 +12,18 @@ import {
   ShoppingBag, 
   Users, 
   LayoutDashboard,
-  Globe,
-  ChevronDown,
   Bell,
+  GraduationCap,
   LucideIcon
 } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
-
-interface NavLinkProps {
-  to: string;
-  icon: LucideIcon;
-  label: string;
-  isActive: boolean;
-}
-
-interface MobileNavLinkProps {
-  to: string;
-  icon: LucideIcon;
-  label: string;
-}
+import { changeLanguage } from '../../utils/languageUtils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   
   // Mock auth state - in a real app, this would come from an auth context
@@ -73,8 +59,14 @@ const Navbar = () => {
     setIsLoggedIn(!isLoggedIn);
   };
 
+  // Handle language change
+  const handleLanguageChange = (code: string) => {
+    changeLanguage(code);
+    setIsLanguageOpen(false);
+  };
+
   // Desktop Navigation Link Component
-  const NavLink = ({ to, icon: Icon, label, isActive }: NavLinkProps) => (
+  const NavLink = ({ to, icon: Icon, label, isActive }: { to: string; icon: LucideIcon; label: string; isActive: boolean }) => (
     <Link
       to={to}
       className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 group ${
@@ -89,7 +81,7 @@ const Navbar = () => {
   );
 
   // Mobile Navigation Link Component
-  const MobileNavLink = ({ to, icon: Icon, label }: MobileNavLinkProps) => (
+  const MobileNavLink = ({ to, icon: Icon, label }: { to: string; icon: LucideIcon; label: string }) => (
     <Link
       to={to}
       className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100/50 transition-all duration-200 group"
@@ -101,8 +93,6 @@ const Navbar = () => {
   
   return (
     <>
-      
-
       {/* Floating Navbar */}
       <nav
         className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
@@ -114,7 +104,10 @@ const Navbar = () => {
         <div className="px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                <GraduationCap className="w-5 h-5 text-white" />
+              </div>
               <span className="text-2xl font-bold text-primary-600">{t('app.name')}</span>
             </Link>
 
@@ -156,19 +149,14 @@ const Navbar = () => {
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   className="flex items-center space-x-2 px-3 py-2 rounded-full hover:bg-gray-100/50 transition-all duration-200"
                 >
-                  <Globe className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm hidden sm:block">🇺🇸</span>
-                  <ChevronDown className="w-3 h-3 text-gray-400" />
+                  <span className="text-sm">{languages.find(lang => lang.code === i18n.language)?.flag}</span>
                 </button>
                 {isLanguageOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white/90 backdrop-blur-md rounded-xl shadow-xl border border-white/20 py-2 animate-in slide-in-from-top-2 duration-200">
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
-                        onClick={() => {
-                          // Handle language change here
-                          setIsLanguageOpen(false);
-                        }}
+                        onClick={() => handleLanguageChange(lang.code)}
                         className="w-full px-4 py-2 text-left hover:bg-gray-100/50 flex items-center space-x-3 transition-colors duration-150"
                       >
                         <span>{lang.flag}</span>
@@ -199,7 +187,6 @@ const Navbar = () => {
                       <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
                         <User className="w-4 h-4 text-white" />
                       </div>
-                      <ChevronDown className="w-3 h-3 text-gray-400 hidden sm:block" />
                     </button>
                     {isProfileOpen && (
                       <div className="absolute right-0 mt-2 w-56 bg-white/90 backdrop-blur-md rounded-xl shadow-xl border border-white/20 py-2 animate-in slide-in-from-top-2 duration-200">
@@ -308,7 +295,22 @@ const Navbar = () => {
 
               {/* Language Switcher for Mobile */}
               <div className="pt-3 border-t border-gray-100/50">
-                <LanguageSwitcher />
+                <div className="flex flex-wrap gap-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
+                        i18n.language === lang.code
+                          ? 'bg-primary-50 text-primary-600'
+                          : 'hover:bg-gray-100/50'
+                      }`}
+                    >
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

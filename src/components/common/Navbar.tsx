@@ -14,9 +14,23 @@ import {
   LayoutDashboard,
   Globe,
   ChevronDown,
-  Bell
+  Bell,
+  LucideIcon
 } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+
+interface NavLinkProps {
+  to: string;
+  icon: LucideIcon;
+  label: string;
+  isActive: boolean;
+}
+
+interface MobileNavLinkProps {
+  to: string;
+  icon: LucideIcon;
+  label: string;
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +74,7 @@ const Navbar = () => {
   };
 
   // Desktop Navigation Link Component
-  const NavLink = ({ to, icon: Icon, label, isActive }) => (
+  const NavLink = ({ to, icon: Icon, label, isActive }: NavLinkProps) => (
     <Link
       to={to}
       className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 group ${
@@ -75,7 +89,7 @@ const Navbar = () => {
   );
 
   // Mobile Navigation Link Component
-  const MobileNavLink = ({ to, icon: Icon, label }) => (
+  const MobileNavLink = ({ to, icon: Icon, label }: MobileNavLinkProps) => (
     <Link
       to={to}
       className="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100/50 transition-all duration-200 group"

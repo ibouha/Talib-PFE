@@ -9,6 +9,9 @@ import MainLayout from './layouts/MainLayout';
 
 // Pages
 import Home from './pages/Home';
+import Login from './pages/auth/Login';
+import AuthLayout from './layouts/AuthLayout';
+
 
 
 // Register GSAP plugins
@@ -32,7 +35,12 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
         </Route>
+        {/* Auth Layout Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
+      
     </div>
   );
 }

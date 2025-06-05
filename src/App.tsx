@@ -14,6 +14,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Housing from './pages/Housing';
 import HousingDetails from './pages/HousingDetails';
+import NotFound from './pages/NotFound';
 
 
 
@@ -46,6 +47,8 @@ function App() {
           <Route path="/register" element={<Register />} />
 
         </Route>
+        {/* 404 Route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       
     </div>

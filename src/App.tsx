@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Housing from './pages/Housing';
+import HousingDetails from './pages/HousingDetails';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/housing" element={<Housing />} />
+          <Route path="/housing/:id" element={<HousingDetails />} />
         </Route>
         {/* Auth Layout Routes */}
         <Route element={<AuthLayout />}>

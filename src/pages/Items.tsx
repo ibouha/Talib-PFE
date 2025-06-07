@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
 import { itemListings } from '../data/mockData';
-import ItemCard, { ItemListing } from '../components/items/ItemCard';
+import ItemCard, { ItemListing } from '../components/items/ItemsCard';
 import ItemFilters from '../components/items/ItemFilters';
 
 const Items = () => {

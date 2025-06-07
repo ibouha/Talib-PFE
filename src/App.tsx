@@ -13,7 +13,9 @@ import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Housing from './pages/Housing';
+import Items from './pages/Items';
 import HousingDetails from './pages/HousingDetails';
+import ItemDetails from './pages/ItemDetails';
 import NotFound from './pages/NotFound';
 
 
@@ -40,6 +42,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/housing" element={<Housing />} />
           <Route path="/housing/:id" element={<HousingDetails />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/items/:id" element={<ItemDetails />} />
         </Route>
         {/* Auth Layout Routes */}
         <Route element={<AuthLayout />}>

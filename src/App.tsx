@@ -14,8 +14,10 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Housing from './pages/Housing';
 import Items from './pages/Items';
+import Roommates from './pages/Roommates';
 import HousingDetails from './pages/HousingDetails';
 import ItemDetails from './pages/ItemDetails';
+import RoommatesDetails from './pages/RoommatesDetails';
 import NotFound from './pages/NotFound';
 
 
@@ -44,6 +46,8 @@ function App() {
           <Route path="/housing/:id" element={<HousingDetails />} />
           <Route path="/items" element={<Items />} />
           <Route path="/items/:id" element={<ItemDetails />} />
+          <Route path="/roommates" element={<Roommates />} />
+          <Route path="/roommates/:id" element={<RoommatesDetails />} />
         </Route>
         {/* Auth Layout Routes */}
         <Route element={<AuthLayout />}>

@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { Search, ArrowUpDown } from 'lucide-react';
 import { itemListings } from '../data/mockData';
 import ItemCard, { ItemListing } from '../components/items/ItemsCard';
-import ItemFilters from '../components/items/ItemFilters';
+import ItemFilters, { ItemFilters as ItemFiltersType } from '../components/items/ItemFilters';
 
 const Items = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredListings, setFilteredListings] = useState<ItemListing[]>(itemListings);
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
-  const [showFilters, setShowFilters] = useState(false);
   const [sortOption, setSortOption] = useState('newest');
-  const [filters, setFilters] = useState({
-    priceRange: [0, 0] as [number, number],
-    category: null as string | null,
-    condition: null as string | null,
+  const [filters, setFilters] = useState<ItemFiltersType>({
+    priceRange: [0, 0],
+    category: null,
+    condition: null,
+    city: null,
+    isFree: null,
   });
   
   // Update document title
@@ -54,6 +54,18 @@ const Items = () => {
       results = results.filter(item => item.condition === filters.condition);
     }
     
+    if (filters.city) {
+      results = results.filter(item => item.city === filters.city);
+    }
+    
+    if (filters.isFree !== null) {
+      if (filters.isFree) {
+        results = results.filter(item => item.price === 0);
+      } else {
+        results = results.filter(item => item.price > 0);
+      }
+    }
+    
     // Apply sorting
     results = [...results].sort((a, b) => {
       switch (sortOption) {
@@ -70,26 +82,14 @@ const Items = () => {
     setFilteredListings(results);
   }, [searchTerm, filters, sortOption]);
   
-  // Toggle favorite
-  const toggleFavorite = (id: string) => {
-    setFavoriteIds(prevIds => 
-      prevIds.includes(id)
-        ? prevIds.filter(prevId => prevId !== id)
-        : [...prevIds, id]
-    );
-  };
-  
-  // Toggle filters panel on mobile
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
-  
   // Reset all filters
   const resetFilters = () => {
     setFilters({
       priceRange: [0, 0],
       category: null,
       condition: null,
+      city: null,
+      isFree: null,
     });
     setSearchTerm('');
     setSortOption('newest');
@@ -115,31 +115,19 @@ const Items = () => {
           />
         </div>
         
-        {/* Sort and Filter Controls */}
-        <div className="flex items-center space-x-3">
-          {/* Mobile Filter Toggle */}
-          <button
-            onClick={toggleFilters}
-            className="md:hidden btn flex items-center space-x-2 border border-gray-300"
-          >
-            <SlidersHorizontal size={18} />
-            <span>{t('common.filter')}</span>
-          </button>
-          
-          {/* Sort Dropdown */}
-          <div className="relative">
-            <div className="flex items-center space-x-1">
-              <ArrowUpDown size={18} className="text-gray-500" />
-              <select
-                className="form-input py-2 pr-8 appearance-none bg-transparent border-none focus:ring-0"
-                value={sortOption}
-                onChange={(e) => setSortOption(e.target.value)}
-              >
-                <option value="newest">{t('items.sort.newest')}</option>
-                <option value="priceAsc">{t('items.sort.priceAsc')}</option>
-                <option value="priceDesc">{t('items.sort.priceDesc')}</option>
-              </select>
-            </div>
+        {/* Sort Dropdown */}
+        <div className="relative">
+          <div className="flex items-center space-x-1">
+            <ArrowUpDown size={18} className="text-gray-500" />
+            <select
+              className="form-input py-2 pr-8 appearance-none bg-transparent border-none focus:ring-0"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+            >
+              <option value="newest">{t('items.sort.newest')}</option>
+              <option value="priceAsc">{t('items.sort.priceAsc')}</option>
+              <option value="priceDesc">{t('items.sort.priceDesc')}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -151,7 +139,7 @@ const Items = () => {
       
       <div className="flex flex-col md:flex-row gap-8">
         {/* Filters Sidebar */}
-        <div className={`w-full md:w-64 md:block ${showFilters ? 'block' : 'hidden'}`}>
+        <div className="w-full md:w-64">
           <ItemFilters 
             filters={filters} 
             onFilterChange={setFilters}
@@ -167,8 +155,6 @@ const Items = () => {
                 <ItemCard 
                   key={item.id} 
                   item={item}
-                  isFavorited={favoriteIds.includes(item.id)}
-                  onToggleFavorite={toggleFavorite}
                 />
               ))}
             </div>

@@ -47,7 +47,7 @@ const ItemCard = ({ item, isFavorited = false, onToggleFavorite }: ItemCardProps
   return (
     <Link to={`/items/${item.id}`} className="card group h-full flex flex-col">
       {/* Item Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-56 overflow-hidden">
         <img
           src={item.images[0]}
           alt={item.title}

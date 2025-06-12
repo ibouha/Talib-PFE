@@ -1,28 +1,36 @@
 <?php
 
-// Simple database configuration
-$db_host = 'localhost';
-$db_name = 'talib';
-$db_user = 'root';
-$db_pass = '';
+class Database {
+    private $host = 'localhost';
+    private $dbname = 'talib';
+    private $username = 'root';
+    private $password = '';
+    private $conn;
 
-// Simple function to get database connection
-function getConnection() {
-    global $db_host, $db_name, $db_user, $db_pass;
+    public function getConnection() {
+        $this->conn = null;
 
-    try {
-        $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";
+        try {
+            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbname . ";charset=utf8mb4";
 
-        $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false
-        );
+            $options = array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false
+            );
 
-        $pdo = new PDO($dsn, $db_user, $db_pass, $options);
-        return $pdo;
+            $this->conn = new PDO($dsn, $this->username, $this->password, $options);
 
-    } catch(PDOException $e) {
-        die("Database connection failed: " . $e->getMessage());
+        } catch(PDOException $e) {
+            die("Database connection failed: " . $e->getMessage());
+        }
+
+        return $this->conn;
     }
+}
+
+// Keep the old function for backward compatibility
+function getConnection() {
+    $database = new Database();
+    return $database->getConnection();
 }

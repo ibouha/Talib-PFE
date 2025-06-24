@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
-import { housingListings } from '../data/mockData';
+import { Housing as HousingType } from '../services/api';
+import housingService from '../services/housingService';
+import { useAuth } from '../contexts/AuthContext';
+import { useFavorites } from '../contexts/FavoritesContext';
 import HousingCard, { HousingListing } from '../components/housing/HousingCard';
 import HousingFilters from '../components/housing/HousingFilters';
 
 const Housing = () => {
   const { t } = useTranslation();
+  const { user, isAuthenticated } = useAuth();
+  const { favoriteHousing, toggleHousingFavorite } = useFavorites();
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredListings, setFilteredListings] = useState<HousingListing[]>(housingListings);
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
+  const [housingListings, setHousingListings] = useState<HousingListing[]>([]);
+  const [filteredListings, setFilteredListings] = useState<HousingListing[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [sortOption, setSortOption] = useState('newest');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState({
     priceRange: [0, 0] as [number, number],
     city: null as string | null,
@@ -20,11 +27,71 @@ const Housing = () => {
     bathrooms: null as number | null,
     furnished: null as boolean | null,
   });
-  
+
   // Update document title
   useEffect(() => {
     document.title = `${t('housing.title')} | ${t('app.name')}`;
   }, [t]);
+
+  // Fetch housing data from backend
+  useEffect(() => {
+    fetchHousingData();
+  }, []);
+
+
+
+  // Convert backend Housing to HousingListing format
+  const convertToHousingListing = (housing: HousingType): HousingListing => {
+    return {
+      id: housing.id,
+      title: housing.title,
+      description: housing.description,
+      price: housing.price,
+      city: housing.city,
+      address: housing.address,
+      type: housing.type,
+      bedrooms: housing.bedrooms,
+      bathrooms: housing.bathrooms,
+      area: housing.area,
+      furnished: housing.is_furnished,
+      amenities: housing.amenities ? housing.amenities.split(',').map(a => a.trim()) : [],
+      images: housing.images && housing.images.length > 0 ? housing.images : [],
+      ownerId: housing.owner_id,
+      postedDate: housing.created_at,
+      available: housing.status !== 'rented'
+    };
+  };
+
+  const fetchHousingData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      console.log('Fetching housing from API...');
+      const response = await housingService.getAll({ limit: 100 }); // Get all housing
+
+      console.log('Housing API response:', response);
+
+      if (response.success) {
+        // Backend returns data in response.data.data format
+        const housing = response.data.data || response.data.housing || [];
+        console.log('Parsed housing data:', housing);
+        const convertedHousing = housing.map(convertToHousingListing);
+        console.log('Converted housing listings:', convertedHousing);
+        setHousingListings(convertedHousing);
+        setFilteredListings(convertedHousing);
+      } else {
+        console.error('Housing API failed:', response.message);
+        setError(response.message || 'Failed to fetch housing data');
+      }
+    } catch (err: any) {
+      console.error('Housing API error:', err);
+      setError(err.message || 'Failed to fetch housing data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   
   // Filter housing listings based on search term and filters
   useEffect(() => {
@@ -72,7 +139,7 @@ const Housing = () => {
     if (filters.furnished !== null) {
       results = results.filter(housing => housing.furnished === filters.furnished);
     }
-    
+
     // Apply sorting
     results = [...results].sort((a, b) => {
       switch (sortOption) {
@@ -89,14 +156,7 @@ const Housing = () => {
     setFilteredListings(results);
   }, [searchTerm, filters, sortOption]);
   
-  // Toggle favorite
-  const toggleFavorite = (id: string) => {
-    setFavoriteIds(prevIds => 
-      prevIds.includes(id)
-        ? prevIds.filter(prevId => prevId !== id)
-        : [...prevIds, id]
-    );
-  };
+
   
   // Toggle filters panel on mobile
   const toggleFilters = () => {
@@ -184,13 +244,13 @@ const Housing = () => {
         {/* Housing Listings Grid */}
         <div className="flex-grow">
           {filteredListings.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredListings.map(housing => (
-                <HousingCard 
-                  key={housing.id} 
+                <HousingCard
+                  key={housing.id}
                   housing={housing}
-                  isFavorited={favoriteIds.includes(housing.id)}
-                  onToggleFavorite={toggleFavorite}
+                  isFavorited={favoriteHousing.includes(housing.id)}
+                  onToggleFavorite={toggleHousingFavorite}
                 />
               ))}
             </div>

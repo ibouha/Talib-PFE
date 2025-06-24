@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MapPin, GraduationCap, Clock, Heart } from 'lucide-react';
+import { useFavorites } from '../../contexts/FavoritesContext';
+import ProfileAvatar from '../common/ProfileAvatar';
 
 // Type for roommate profile data
 export type RoommateProfile = {
@@ -34,15 +36,18 @@ interface RoommateCardProps {
   onToggleFavorite?: (id: string) => void;
 }
 
-const RoommateCard = ({ roommate, isFavorited = false, onToggleFavorite }: RoommateCardProps) => {
+const RoommateCard = ({ roommate, isFavorited, onToggleFavorite }: RoommateCardProps) => {
   const { t } = useTranslation();
+  const { isRoommateFavorited, toggleRoommateFavorite } = useFavorites();
+  
+  // Use context if no props provided
+  const favorited = isFavorited !== undefined ? isFavorited : isRoommateFavorited(roommate.id);
+  const toggleFavorite = onToggleFavorite || toggleRoommateFavorite;
   
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (onToggleFavorite) {
-      onToggleFavorite(roommate.id);
-    }
+    toggleFavorite(roommate.id);
   };
   
   // Get lifestyle labels
@@ -55,13 +60,13 @@ const RoommateCard = ({ roommate, isFavorited = false, onToggleFavorite }: Roomm
       <div className="p-6">
         <div className="flex items-center">
           {/* Avatar */}
-          <div className="h-20 w-20 rounded-full overflow-hidden mr-4 border-2 border-primary-100">
-            <img 
-              src={roommate.avatar} 
-              alt={roommate.name} 
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <ProfileAvatar
+            imageUrl={roommate.avatar}
+            name={roommate.name}
+            size="xl"
+            className="mr-4 h-20 w-20 border-2 border-primary-100"
+            showBorder={true}
+          />
           
           {/* Basic Info */}
           <div className="flex-grow">
@@ -70,9 +75,9 @@ const RoommateCard = ({ roommate, isFavorited = false, onToggleFavorite }: Roomm
               <button
                 onClick={handleFavoriteClick}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
-                aria-label={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+                aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
               >
-                <Heart size={20} className={isFavorited ? 'fill-primary-500 text-primary-500' : 'text-gray-400'} />
+                <Heart size={20} className={favorited ? 'fill-primary-500 text-primary-500' : 'text-gray-400'} />
               </button>
             </div>
             <p className="text-gray-600 flex items-center text-sm">

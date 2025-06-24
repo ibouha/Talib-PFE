@@ -1,8 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, MapPin, Building } from 'lucide-react';
-import { housingListings } from '../../data/mockData';
+import { Housing } from '../../services/api';
+import housingService from '../../services/housingService';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,13 +11,34 @@ const PopularListings = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<HTMLDivElement[]>([]);
-  
+  const [popularHousing, setPopularHousing] = useState<Housing[]>([]);
+  const [loading, setLoading] = useState(true);
+
   // Add to refs array
   const addToRefs = (el: HTMLDivElement) => {
     if (el && !cardRefs.current.includes(el)) {
       cardRefs.current.push(el);
     }
   };
+
+  // Fetch popular housing from backend
+  useEffect(() => {
+    const fetchPopularHousing = async () => {
+      try {
+        setLoading(true);
+        const response = await housingService.getFeatured(3); // Get 3 featured housing
+        if (response.success) {
+          setPopularHousing(response.data.housing || []);
+        }
+      } catch (error) {
+        console.error('Error fetching popular housing:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPopularHousing();
+  }, []);
   
   // Set up animations
   useEffect(() => {
@@ -62,8 +84,23 @@ const PopularListings = () => {
     };
   }, []);
   
-  // Get 3 popular listings
-  const popularHousing = housingListings.slice(0, 3);
+  // Show loading state
+  if (loading) {
+    return (
+      <section className="section bg-gray-50">
+        <div className="container-custom">
+          <div className="flex items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Don't show section if no housing data
+  if (popularHousing.length === 0) {
+    return null;
+  }
   
   return (
     <section ref={sectionRef} className="section bg-gray-50">
@@ -84,15 +121,13 @@ const PopularListings = () => {
               className="card overflow-hidden h-full flex flex-col"
             >
               {/* Housing Image */}
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={housing.images[0]}
-                  alt={housing.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
+              <div className="relative h-56 overflow-hidden bg-gray-200">
+                <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  <Building size={48} />
+                </div>
                 <div className="absolute top-4 right-4">
                   <span className="badge-primary">
-                    {t(`housing.types.${housing.type}`)}
+                    {housing.type}
                   </span>
                 </div>
               </div>
@@ -102,7 +137,7 @@ const PopularListings = () => {
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-semibold mb-2 flex-grow">{housing.title}</h3>
                   <p className="text-primary-600 font-bold">
-                    {t('common.price', { price: housing.price })}
+                    {housing.price.toLocaleString()} MAD/month
                   </p>
                 </div>
                 
@@ -121,7 +156,7 @@ const PopularListings = () => {
                   <div className="flex items-center text-sm text-gray-600 bg-gray-100 rounded-full px-3 py-1">
                     <span>{housing.area} m²</span>
                   </div>
-                  {housing.furnished && (
+                  {housing.is_furnished && (
                     <div className="flex items-center text-sm text-gray-600 bg-gray-100 rounded-full px-3 py-1">
                       <span>Furnished</span>
                     </div>

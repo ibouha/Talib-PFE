@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Filter, X, Check } from 'lucide-react';
-import { moroccanCities } from '../../data/mockData';
+// Moroccan cities list
+const moroccanCities = [
+  'Casablanca', 'Rabat', 'Marrakech', 'Fes', 'Tangier', 'Agadir',
+  'Meknes', 'Oujda', 'Kenitra', 'Tetouan'
+];
 
 export type HousingFilters = {
   priceRange: [number, number];

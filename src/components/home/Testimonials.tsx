@@ -1,13 +1,37 @@
 import { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Quote } from 'lucide-react';
-import { testimonials } from '../../data/mockData';
 import gsap from 'gsap';
 
 const Testimonials = () => {
   const { t } = useTranslation();
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Static testimonials data
+  const testimonials = [
+    {
+      id: '1',
+      name: 'Hakim Ziani',
+      university: 'Mohammed V University',
+      text: 'Thanks to Talib, I found the perfect apartment near my university and a great roommate. The platform saved me so much time!',
+      avatar: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600'
+    },
+    {
+      id: '2',
+      name: 'Nora El Amrani',
+      university: 'Hassan II University',
+      text: 'I was able to sell all my textbooks from last semester and buy the ones I needed for this year. The item exchange feature is amazing!',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600'
+    },
+    {
+      id: '3',
+      name: 'Karim Tazi',
+      university: 'Ibn Tofail University',
+      text: 'Moving to a new city for studies was intimidating, but Talib made finding accommodation and connecting with other students so easy.',
+      avatar: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=600'
+    }
+  ];
   
   // Animation setup
   useEffect(() => {

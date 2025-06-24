@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Building, ShoppingBag, Users } from 'lucide-react';
 import gsap from 'gsap';
+import heroImage from '../../public/Image_fx (14).jpg';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -90,28 +91,10 @@ const Hero = () => {
           <div ref={heroImageRef} className="relative lg:flex justify-end">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.pexels.com/photos/8199761/pexels-photo-8199761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                src={heroImage} 
                 alt="Students" 
                 className="w-full h-auto object-cover"
               />
-              
-              {/* Stats overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
-                <div className="grid grid-cols-3 gap-4 text-white">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold">5K+</p>
-                    <p className="text-xs">{t('home.stats.students')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold">1.8K+</p>
-                    <p className="text-xs">{t('home.stats.listings')}</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold">15+</p>
-                    <p className="text-xs">{t('home.stats.universities')}</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

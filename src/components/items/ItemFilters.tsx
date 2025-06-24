@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Filter, X, Check } from 'lucide-react';
-import { moroccanCities } from '../../data/mockData';
 
 export type ItemFilters = {
   priceRange: [number, number];
   category: string | null;
   condition: string | null;
-  city: string | null;
-  isFree: boolean | null;
 };
 
 interface ItemFiltersProps {
@@ -33,7 +30,7 @@ const ItemFilters = ({ filters, onFilterChange, onFilterReset }: ItemFiltersProp
   
   const conditions = [
     { value: 'new', label: t('items.conditions.new') },
-    { value: 'like_new', label: t('items.conditions.likeNew') },
+    { value: 'likeNew', label: t('items.conditions.likeNew') },
     { value: 'good', label: t('items.conditions.good') },
     { value: 'fair', label: t('items.conditions.fair') },
     { value: 'poor', label: t('items.conditions.poor') }
@@ -49,14 +46,6 @@ const ItemFilters = ({ filters, onFilterChange, onFilterReset }: ItemFiltersProp
   
   const handleConditionChange = (condition: string) => {
     onFilterChange({ ...filters, condition: condition === filters.condition ? null : condition });
-  };
-  
-  const handleCityChange = (city: string) => {
-    onFilterChange({ ...filters, city: city || null });
-  };
-  
-  const handleFreeChange = (isFree: boolean | null) => {
-    onFilterChange({ ...filters, isFree });
   };
   
   const toggleMobileFilters = () => {
@@ -157,54 +146,6 @@ const ItemFilters = ({ filters, onFilterChange, onFilterReset }: ItemFiltersProp
                       {condition.label}
                     </button>
                   ))}
-                </div>
-              </div>
-              
-              {/* City Filter */}
-              <div>
-                <h4 className="font-medium mb-2">City</h4>
-                <select
-                  className="form-input w-full"
-                  value={filters.city || ''}
-                  onChange={(e) => handleCityChange(e.target.value)}
-                >
-                  <option value="">All Cities</option>
-                  {moroccanCities.map((city, index) => (
-                    <option key={index} value={city}>
-                      {city}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              
-              {/* Free Items Filter */}
-              <div>
-                <h4 className="font-medium mb-2">Price Type</h4>
-                <div className="flex space-x-2">
-                  <button
-                    type="button"
-                    onClick={() => handleFreeChange(filters.isFree === false ? null : false)}
-                    className={`px-4 py-2 rounded-lg border flex items-center ${
-                      filters.isFree === false
-                        ? 'bg-primary-50 border-primary-500 text-primary-700'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    {filters.isFree === false && <Check size={16} className="mr-1" />}
-                    Paid
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleFreeChange(filters.isFree === true ? null : true)}
-                    className={`px-4 py-2 rounded-lg border flex items-center ${
-                      filters.isFree === true
-                        ? 'bg-primary-50 border-primary-500 text-primary-700'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    {filters.isFree === true && <Check size={16} className="mr-1" />}
-                    Free
-                  </button>
                 </div>
               </div>
             </div>
@@ -312,58 +253,6 @@ const ItemFilters = ({ filters, onFilterChange, onFilterReset }: ItemFiltersProp
               ))}
             </div>
           </div>
-          
-          <hr />
-          
-          {/* City Filter */}
-          <div>
-            <h4 className="font-medium mb-2">City</h4>
-            <select
-              className="form-input w-full"
-              value={filters.city || ''}
-              onChange={(e) => handleCityChange(e.target.value)}
-            >
-              <option value="">All Cities</option>
-              {moroccanCities.map((city, index) => (
-                <option key={index} value={city}>
-                  {city}
-                </option>
-              ))}
-            </select>
-          </div>
-          
-          <hr />
-          
-          {/* Free Items Filter */}
-          <div>
-            <h4 className="font-medium mb-2">Price Type</h4>
-            <div className="flex space-x-2">
-              <button
-                type="button"
-                onClick={() => handleFreeChange(filters.isFree === false ? null : false)}
-                className={`px-4 py-2 rounded-lg border flex items-center ${
-                  filters.isFree === false
-                    ? 'bg-primary-50 border-primary-500 text-primary-700'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                {filters.isFree === false && <Check size={16} className="mr-1" />}
-                Paid
-              </button>
-              <button
-                type="button"
-                onClick={() => handleFreeChange(filters.isFree === true ? null : true)}
-                className={`px-4 py-2 rounded-lg border flex items-center ${
-                  filters.isFree === true
-                    ? 'bg-primary-50 border-primary-500 text-primary-700'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                {filters.isFree === true && <Check size={16} className="mr-1" />}
-                Free
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </>
@@ -371,5 +260,3 @@ const ItemFilters = ({ filters, onFilterChange, onFilterReset }: ItemFiltersProp
 };
 
 export default ItemFilters;
-
-export { ItemFilters }

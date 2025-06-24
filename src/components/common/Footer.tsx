@@ -12,7 +12,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">{t('app.name')}</h3>
+            <Link to="/" className="flex items-center space-x-2 mb-4 ">
+            <div className="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center">
+              <GraduationCap className="w-5 h-5 text-white" />
+              </div>
+             <span className='text-xl font-bold text-yellow-500'>{t('app.name')}</span>
+            </Link>
             <p className="mb-4 text-gray-400">{t('app.tagline')}</p>
             <div className="flex space-x-4">
               <a href="#" aria-label="Facebook" className="text-gray-400 hover:text-white transition-colors">

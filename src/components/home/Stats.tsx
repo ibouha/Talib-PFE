@@ -1,7 +1,6 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Users, Building, GraduationCap, MapPin } from 'lucide-react';
-import { statistics } from '../../data/mockData';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -9,7 +8,13 @@ const Stats = () => {
   const { t } = useTranslation();
   const statsRef = useRef<HTMLDivElement>(null);
   const counterRefs = useRef<HTMLSpanElement[]>([]);
-  
+  const [statistics] = useState({
+    students: 1200,
+    listings: 920,
+    universities: 15,
+    cities: 10
+  });
+
   const addToRefs = (el: HTMLSpanElement) => {
     if (el && !counterRefs.current.includes(el)) {
       counterRefs.current.push(el);
